@@ -1,0 +1,44 @@
+{
+    "entries": [
+        {
+            "id": 1,
+            "desc": "Office supplies order",
+            "Items": [
+                "Stapler",
+                "Printer paper",
+                "Highlighter set"
+            ],
+            "worth": 24.75
+        },
+        {
+            "id": 2,
+            "desc": "Cafeteria restock",
+            "Items": [
+                "Coffee pods",
+                "Sugar packets",
+                "Tea bags"
+            ],
+            "worth": 18.40
+        },
+        {
+            "id": 3,
+            "desc": "Cleaning supplies",
+            "Items": [
+                "Disinfectant spray",
+                "Paper towels",
+                "Trash bags"
+            ],
+            "worth": 27.60
+        },
+        {
+            "id": 4,
+            "desc": "Lunch delivery",
+            "Items": [
+                "Turkey sandwich",
+                "Salad",
+                "Bottled water"
+            ],
+            "worth": 32.25
+        }
+    ]
+}
