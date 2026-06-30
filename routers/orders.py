@@ -1,5 +1,5 @@
 
-from fastapi import FastAPI, Path, HTTPException, status, APIRouter
+from fastapi import HTTPException, status, APIRouter
 from schemas.order import Order, UpdateOrder
 
 router = APIRouter(
@@ -63,19 +63,11 @@ orders = {
 #currently Hard coded to 4 
 #TODO: Make a function that reads the amount of current orders and then sets sour Var to That number\
 
-app = FastAPI()
-print("works")
-
-
-@router.get("/")
-def root():
-    return {"message": "Hello World"}
-
-@router.get("/orders")
+@router.get("")
 async def order_print():
     return orders
 
-@router.get("/orders/{order_id}")
+@router.get("/{order_id}")
 async def order_print_specified(order_id: int):
     #TODO: find out why path is dropping succh a big error
     # = Path(None, Description="The ID of The Order your Seacrching for.", gt = 0, lt=total_orders)
@@ -113,7 +105,7 @@ async def find_order_by_customer_name(name: str):
     #     "worth": 32.25
     # }
 #POST
-@router.post("/orders", status_code=201)
+@router.post("", status_code=201)
 async def add_to_orders(order: Order):
     order_id = max(orders.keys()) + 1
     order.id = order_id
@@ -122,7 +114,7 @@ async def add_to_orders(order: Order):
     return orders[order_id]
 
 #update
-@router.patch("/orders/{order_id}")
+@router.patch("/{order_id}")
 async def update_order(order_id: int, order: UpdateOrder):
     if order_id not in orders:
         raise HTTPException(
@@ -144,7 +136,7 @@ async def update_order(order_id: int, order: UpdateOrder):
 
     return stored_order
 
-@router.delete("/orders/{order_id}")
+@router.delete("/{order_id}")
 async def delete_order(order_id: int):
     if order_id not in orders:
         raise HTTPException(
